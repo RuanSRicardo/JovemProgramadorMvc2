@@ -1,0 +1,68 @@
+﻿@model List<AlunoModel>
+
+@if (ViewData["mensagem"] != null)
+{
+    <div class="alert-danger">
+        @ViewData["mensagem"]
+    </div>
+}
+<div class="text-left">
+
+
+    <div>
+
+        <h1>Dados dos Alunos</h1>
+    </div>
+
+    <div>
+
+
+        <script>
+            function showAlert()
+            {
+                 window.alert("Aluno excluído com sucesso!!!");
+            }
+        </script>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Contato</th>
+                <th scope="col">Cep</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (AlunoModel aluno in Model)
+                {
+                    <tr>
+                        <td> @aluno.Nome </td>
+                        <td> @aluno.Email</td>
+                        <td> @aluno.Idade</td>
+                        <td> @aluno.Contato</td>
+                        <td> @aluno.Cep </td>
+                        <td><a class="btn btn-dark" type="button" asp-controller="Aluno" asp-action="Endereco" asp-route-cep="@aluno.Id">Endereço</a></td>
+                        <td><a class="btn btn-dark" type="button" asp-controller="Aluno" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a></td>
+                        <td><a class="btn btn-danger" type="button" onclick="showAlert()" asp-controller="Aluno" asp-action="Excluir" asp-route-id="@aluno.Id">Excluir</a></td>
+
+                    </tr>
+                }
+            }
+        </tbody>
+
+    </table>
+
+    <div class="text-center">
+        <a class="btn btn-dark" type="button" asp-controller="Aluno" asp-action="Adicionar">Adicionar Novo Aluno</a>
+        <a class="btn btn-dark" type="button" asp-controller="Aluno" asp-action="Filtros">Filtros Aluno</a>
+        <a class="btn btn-dark" type="button" asp-controller="Aluno" asp-action="Index"> Voltar</a>
+    </div>
+
+</div>

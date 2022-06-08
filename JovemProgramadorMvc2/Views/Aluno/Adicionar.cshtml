@@ -1,0 +1,43 @@
+﻿@model AlunoModel
+
+<form asp-controller="Aluno" asp-action="Inserir" method="post">
+    <div class="text-left"></div>
+
+    <div>
+
+        <h1>
+            Cadastrar Novo Aluno
+
+            <script>
+                function showAlert()
+                {
+                     window.alert("Aluno salvo com sucesso!!!");
+                }
+             </script>
+        </h1>
+    </div>
+
+    <label for="inputtext" class="form-label">Nome</label>
+    <input type="text" asp-for="Nome" class="col-4 form-control">
+
+    <label for="inputtext" class="form-label">Idade</label>
+    <input type="text" asp-for="Idade" class="col-2 form-control" placeholder="18">
+
+    <label for="inputtext" class="form-label">Contato</label>
+    <input type="text" asp-for="Contato" class="col-2 form-control" placeholder="(99) 9 9999-9999">
+
+    <label for="inputtext" class="form-label">Email</label>
+    <input type="text" asp-for="Email" class="col-3 form-control" placeholder="email@exemplo.com">
+
+    <label for="inputtext" class="form-label">Cep</label>
+    <input type="text" asp-for="Cep" class="col-2 form-control" placeholder="88000-000">
+
+    <div class="text-center">
+        <button class="btn btn-dark" onclick="showAlert()" role="button" type="submit">Salvar</button>
+
+
+        <a class="btn btn-dark" type="button" asp-controller="Aluno" asp-action="Index">Voltar</a>
+
+    </div>
+</form>
+
